@@ -1,0 +1,26 @@
+Actions
+    useTransition
+    useOptimistic
+    useActionState
+    useFormStatus
+
+New API
+    use
+    prerender
+    prerenderToNodeStream
+
+Server Action
+
+Hydration
+
+ref as a prop
+Diffs for hydration errors
+<Context> as a provider
+Cleanup functions for refs
+useDeferredValue initial value
+Support for Document Metadata
+Support for stylesheets
+Support for async scripts
+Support for preloading resources
+Better error reporting
+Support for Custom Elements
