@@ -1,0 +1,30 @@
+New versions are required for new features
+
+How to Check current version :::
+in package.json file go to dependencies and see the version of "react" and "react-dom"
+
+We can change the version in the package.json and hit the "npm install" command on terminal to download the relevant packages.
+for the safer side you can delete the "node_module" folder before hitting the "npm install" command.
+
+In your package.json line:
+"react-dom": "^19.1.1"
+
+the caret (^) means allow updates that do not change the leftmost non-zero number (the major version).
+
+Specifically:
+19.1.1 = major.minor.patch
+major = 19
+minor = 1
+patch = 1
+
+With ^19.1.1, npm (or yarn, pnpm) will install:
+Anything from 19.1.1 up to, but not including, 20.0.0.
+
+So:
+✅ Allowed updates: 19.1.2, 19.2.0, 19.9.9, etc.
+❌ Not allowed: 20.0.0 or higher (because that could include breaking changes).
+
+🔹 Quick comparison:
+"react-dom": "19.1.1" → lock to exactly 19.1.1.
+"react-dom": "~19.1.1" → allow patch updates only (19.1.x, but not 19.2.0).
+"react-dom": "^19.1.1" → allow minor + patch updates (19.x.x, but not 20.0.0).
