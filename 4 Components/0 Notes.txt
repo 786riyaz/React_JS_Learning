@@ -1,0 +1,71 @@
+1. What is a Component in ReactJS?
+
+-   A component is a reusable piece of UI in React.
+-   It acts like a building block for web applications.
+-   Each component can handle its own structure, logic, and styling.
+
+Key Features: - Reusable → Use same component multiple times (e.g.,
+button, header). - Independent → Works on its own, modular. - Composable
+→ Combine small components to create larger UIs. - Maintainable →
+Breaking UI into parts makes code easier to manage.
+
+2. Types of Components
+(1) Functional Components (Preferred way)
+-   Simple JavaScript functions that return JSX.
+-   Example:
+        function Welcome(props) {
+          return <h1>Hello, {props.name}!</h1>;
+        }
+
+        // Arrow function style
+        const Welcome = ({ name }) => <h1>Hello, {name}!</h1>;
+
+(2) Class Components (Older way)
+-   Written using ES6 classes.
+-   Can hold state and lifecycle methods.
+-   Example:
+        class Welcome extends React.Component {
+          render() {
+            return <h1>Hello, {this.props.name}!</h1>;
+          }
+        }
+
+3. Using a Component
+    function App() {
+      return (
+        <div>
+          <Welcome name="Riyaz" />
+          <Welcome name="Khan" />
+        </div>
+      );
+    }
+
+-   Welcome is a component.
+-   App is also a component.
+-   name is a prop (data passed to the component).
+
+4. Summary
+-   A React component = a custom, reusable, self-contained UI block.
+-   Works like your own HTML tag.
+-   Helps build scalable and maintainable apps.
+
+=============================================================================================
+
+While sending a component means Exporting component
+While using a companine means Importing a component
+
+We can export multiple component from single JSX file
+We can only export one component by default
+
+Type of Export
+  Default Export
+  Named Export
+  Multiple Export
+
+Default Export can directly be imported without curly brackets 
+export default Login();
+import Login from "./UserComponent";
+
+Named Export must be imported with curly brackets
+export function Login() {
+import {Login} from "./UserComponent";
