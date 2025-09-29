@@ -1,0 +1,4 @@
+JSX = JavaScript XML /// JavaScript Syntax Extension
+
+JSX is combination of JavaScript and HTML
+Using this we can write the HTML code directly into the JavaScript File.
