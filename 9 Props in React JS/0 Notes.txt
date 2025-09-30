@@ -1,0 +1,1 @@
+Props is useful when we have to pass different variable/parameters across different components 
