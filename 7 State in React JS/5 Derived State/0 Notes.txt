@@ -1,0 +1,1 @@
+Derived State is useful to make the application fast by using variables instead of multiple states.

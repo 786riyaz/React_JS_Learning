@@ -1,0 +1,13 @@
+State is a container to store data like variable
+whenever the value of State change the component will be re-render so the data can be reflect on UI
+
+State is mutable and dynamic
+
+We have to import the State to use and will be used with Hooks
+
+
+==================================
+
+Hook are the special feature of React which workds with Functional components
+anything starts from word "use" then they are hooks like ..
+useState, useContext, useEffect, useId etc
