@@ -1,0 +1,5 @@
+useRef hook is useful for DOM Manipulation
+It stores the reference of any HTML object like input field, h1, button etc
+
+
+React suggests to use state and props for DOM manipulation.
