@@ -1,0 +1,61 @@
+remove side effect inside the component
+remove side effect from outside component
+use to fetch data
+can use as life cycle methods
+can use for DOM manipulation
+etc
+
+
+call every time
+useEffect(()=>{
+    ..code
+})
+
+call only once
+useEffect(()=>{
+    ..code
+},[])
+
+call on changing single state
+useEffect(()=>{
+    ..code
+},[stateName])
+
+call on changing multiple state
+useEffect(()=>{
+    ..code
+},[state1, state2])
+
+call on changing prop
+useEffect(()=>{
+    ..code
+},[prop1, prop2])
+
+
+===========================================================================================
+Component Life Cycle in React ===>
+Mounting (Display on UI) ===> Updating (Changes on UI) ===> Unmounting (Remove From Display) 
+                              Error Handling
+
+This code will run on mount
+useEffect(()=>{
+    ..code
+},[])
+
+This code will run on update
+useEffect(()=>{
+    ..code
+},[state or props])
+
+This code will run on unmount
+useEffect(()=>{
+        .. code
+    return () => {
+        ..code
+    }
+},[])
+
+This code will run on every life cycle event
+useEffect(()=>{
+    ..code
+})
