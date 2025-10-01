@@ -1,0 +1,1 @@
+Uncontroller Component means a component whose input field value is not controllered by React' State but old Js methods like action and getting values using document object.
