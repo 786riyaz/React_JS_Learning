@@ -1,0 +1,2 @@
+In React, forwardRef is a function that lets you pass a ref from a parent component down to a child component.
+It’s mainly used to allow parent components to directly access a child’s DOM element or component instance.
