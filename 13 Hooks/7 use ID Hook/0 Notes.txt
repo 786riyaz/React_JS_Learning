@@ -1,0 +1,1 @@
+useID hook is for generating unique ID for every HTML element each time.

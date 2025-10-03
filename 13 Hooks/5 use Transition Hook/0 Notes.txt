@@ -1,0 +1,6 @@
+use Transition Hook is useful when we want to display some item like loading mask whenever the button is clicked and the response of service takes some time.
+
+We can use the "useTransition" hook even when the form element is not in component
+
+we can also use the state to achieve the same thing but then we have to write more codes.
+
