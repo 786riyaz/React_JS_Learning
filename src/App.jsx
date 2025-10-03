@@ -5,6 +5,7 @@ const emailRegex = /^[a-z0-9]+@[a-z]+.[a-z]+$/;
 
 export default function App() {
   const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const validateData = (prevData, formData) => {
     console.log("Name :", formData.get("name"));
@@ -28,9 +29,12 @@ export default function App() {
         return {name, password, age, email};
       } else {
         setError(false);
+        setSuccess("Data Submitted Successfully");
       }
     } else {
       console.log("Please Enter all the values");
+      setError("Please Enter all the values");
+      // alert("Please Enter all the values");
       return {name, password, age, email};
     }
   };
@@ -51,6 +55,7 @@ export default function App() {
         <input type="email" name="email" defaultValue={data?.email} placeholder="Enter Email ID"/>
         <br />
         <span style={{ color: "red" }}>{error ? error : null}</span>
+        <span style={{ color: "green" }}>{success ? success : null}</span>
         <br />
         <button>Submit</button>
       </form>
