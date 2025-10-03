@@ -42,13 +42,13 @@ export default function App() {
     <div className="App">
       <h1>User Form</h1>
       <form action={action}>
-        <input type="text" name="name" defaultValue={data?.name} />
+        <input type="text" name="name" defaultValue={data?.name} placeholder="Enter User Name"/>
         <br />
-        <input type="password" name="password" defaultValue={data?.password} />
+        <input type="password" name="password" defaultValue={data?.password} placeholder="Enter Password"/>
         <br />
-        <input type="number" name="age" defaultValue={data?.age} />
+        <input type="number" name="age" defaultValue={data?.age} placeholder="Enter Age"/>
         <br />
-        <input type="email" name="email" defaultValue={data?.email} />
+        <input type="email" name="email" defaultValue={data?.email} placeholder="Enter Email ID"/>
         <br />
         <span style={{ color: "red" }}>{error ? error : null}</span>
         <br />

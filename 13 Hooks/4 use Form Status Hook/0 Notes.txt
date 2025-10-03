@@ -1,0 +1,9 @@
+useFormStatus hooks provides a way to fetch the details of a form like 
+If a form is submitted or not.
+
+This is useful when the form takes much time to be submitted.
+
+This is not available in older version.
+This is available from version 19.
+
+useFormStatus will only works with form element
