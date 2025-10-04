@@ -1,0 +1,1 @@
+CSS module is useful when you want to apply the CSS only for a specific component.

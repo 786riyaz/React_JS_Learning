@@ -1,0 +1,5 @@
+Styled component are useful to create and manage styling easily
+
+
+Command to Install :::
+npm i styled-components
