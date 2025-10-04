@@ -1,0 +1,6 @@
+React inline is different from HTML inline 
+We need styling in JS or JSON format
+
+<div style="color: blue; background-color: red;">This is HTML CSS</div>
+
+<div style={{color: 'blue', backgroundColor: 'red'}}>This is React CSS</div>

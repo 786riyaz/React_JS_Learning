@@ -1,0 +1,19 @@
+.heading {
+  color: green;
+}
+
+.picture {
+  width: 200px;
+}
+
+.info {
+  padding-left: 60px;
+}
+
+.cardStyle {
+  border: 5px solid green;
+  border-radius: 10px;
+  width: 220px;
+  padding: 10px;
+  margin: 5px;
+}
