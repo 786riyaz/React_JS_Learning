@@ -1,0 +1,5 @@
+We can use UseReducer hook in place of useState.
+But this is efficient and effective way when you have a large form.
+This allows you to handle all the data without creating multiple state objects and without the headache of managing all of the state which also slows down your application due to high amount of re-rendering
+
+Definately we can use Array or object as state but still it requires much more logic and spread operator to manage the data carefully.

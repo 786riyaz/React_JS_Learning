@@ -1,0 +1,8 @@
+Hooks is useful when we need state, life cycle method in a function component 
+
+here are some examples ::: 
+useState
+useEffect
+useContext
+useRef
+useReducer

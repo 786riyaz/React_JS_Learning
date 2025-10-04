@@ -1,0 +1,35 @@
+Rule 1 :::
+Start with use___
+like useState, useRef etc
+===========================================================
+Rule 2 ::: 
+Use Hooks at Top Level
+
+This is Correct Way ====>
+export default function App () {
+	const [user,setUser] = useState();
+	...code
+}
+
+Incorrect Way ===>
+if(condition) {
+	const [user,setUser] = useState();
+}
+===========================================================
+Do not call Hooks inside conditions or loops.
+Do not call Hooks after a conditional return statement.
+Do not call Hooks in event handlers.
+Do not call Hooks in class components.
+Do not call Hooks inside try/catch/finally blocks.
+===========================================================
+Don't call Hooks from regular JavaScript functions.
+Instead, you can:
+	Call Hooks from React function components.
+	Call Hooks from custom Hooks.
+===========================================================
+Do not call hooks in normal js file .js
+===========================================================
+Variable names must not contradict with another variable name 
+===========================================================
+We can also use predefined hook in custom hooks.
+even we can use custom hook in another custom hook.
