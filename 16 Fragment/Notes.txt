@@ -1,0 +1,5 @@
+the javascript can only retun a single object at a time like ...
+function temp () { return {key:"value"} }
+
+We can not do this with return statement
+function temp () { return {key:"value"}{key:"value"} }
