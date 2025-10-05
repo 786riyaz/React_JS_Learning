@@ -1,0 +1,10 @@
+Website ::: 
+https://tailwindcss.com/docs/installation/using-vite
+
+CMD Command to install tailwind Css ::
+npm install -D tailwindcss postcss autoprefixer
+
+here -D install the package as a dev dependencies
+
+Then you have to run this command :: 
+npx tailwindcss init -p

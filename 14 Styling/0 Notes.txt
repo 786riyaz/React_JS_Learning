@@ -1,0 +1,6 @@
+Types of stylyes in React JS
+    Inline                            (Style tag inside HTML tag)
+    External                          (Separate CSS file)
+    CSS Module                        (Components specific CSS file)
+    Styled Components                 (CSS written in Component)
+    External CSS Libraty or Framework (Material-UI, React Bootstrap, Tailwind CSS)

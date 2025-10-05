@@ -1,0 +1,17 @@
+https://react-bootstrap.netlify.app/
+https://react-bootstrap.netlify.app/docs/getting-started/introduction
+
+Command to install  :: 
+npm install react-bootstrap bootstrap
+
+Importing Component :: 
+import Button from 'react-bootstrap/Button';
+// or less ideally
+import { Button } from 'react-bootstrap';
+
+
+Importing CSS
+{
+  /* The following line can be included in your src/index.js or App.js file */
+}
+import 'bootstrap/dist/css/bootstrap.min.css';
