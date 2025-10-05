@@ -1,0 +1,32 @@
+1. Pure Function in React
+In JavaScript, a pure function is a function that:
+Returns the same output for the same input.
+Has no side effects (doesn’t modify external variables, DOM, API calls, etc.).
+
+👉 In React, components can also be pure functions if they just take props and return JSX without side effects.
+
+function Greeting(props) {
+  return <h1>Hello, {props.name}!</h1>;
+}
+
+✅ For the same props.name, it always renders the same output.
+❌ It doesn’t change any external state or perform side effects.
+
+===============================================================================================
+2. Pure Component in React
+React provides React.PureComponent (a class-based feature).
+It is similar to React.Component, but it automatically implements shouldComponentUpdate() with a shallow comparison of props and state.
+
+👉 That means a PureComponent re-renders only if props or state have changed.
+This can improve performance for components with unchanged props/state.
+
+import React, { PureComponent } from "react";
+class Counter extends PureComponent {
+  render() {
+    console.log("Rendering Counter...");
+    return <h2>Count: {this.props.count}</h2>;
+  }
+}
+export default Counter;
+
+If parent re-renders without changing count, this PureComponent will not re-render, saving performance.
