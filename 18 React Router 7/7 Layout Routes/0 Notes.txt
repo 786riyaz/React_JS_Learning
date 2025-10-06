@@ -1,0 +1,16 @@
+In React Router (v6 and above), layout routes are a way to share common UI (like a navigation bar, sidebar, or footer) across multiple pages without repeating the same code in every route.
+
+Think of them as a "wrapper route" that renders shared components along with whichever child route is currently active.
+
+🔹 How it Works
+A layout route uses the <Outlet /> component.
+<Outlet /> acts as a placeholder where nested child routes will be rendered.
+
+🔹 How it Renders
+Visiting / → Layout renders + Home inside <Outlet />.
+Visiting /about → Layout renders + About inside <Outlet />.
+Visiting /contact → Layout renders + Contact inside <Outlet />.
+So Layout is always visible, and the content changes inside <Outlet />.
+
+✅ In short:
+Layout routes let you define a common page structure (header, sidebar, footer, etc.) and nest different pages inside it.
