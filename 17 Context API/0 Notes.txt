@@ -1,0 +1,63 @@
+The Context API in React is used for managing and sharing state globally across a component tree without having to pass props manually at every level (known as prop drilling).
+
+🔑 Key Uses of Context API:
+1. Avoids Prop Drilling
+Instead of passing data through multiple levels of components as props, Context provides a way to supply data directly to deeply nested components.
+
+2. Global State Management (Lightweight)
+Useful for smaller applications or specific use cases where you don’t want to install a heavy state management library like Redux or Zustand.
+
+3. Share Common Data
+Perfect for data that many components need, such as:
+Theme (dark/light mode)
+User authentication details
+Current language (i18n)
+Shopping cart state
+App-wide settings
+==========================================================================================================================================================================
+⚡ Example: Without Context (prop drilling problem)
+function App() {
+  const user = { name: "Riyaz", role: "Admin" };
+  return <Parent user={user} />;
+}
+
+function Parent({ user }) {
+  return <Child user={user} />;
+}
+
+function Child({ user }) {
+  return <GrandChild user={user} />;
+}
+
+function GrandChild({ user }) {
+  return <h1>Welcome, {user.name}</h1>;
+}
+==========================================================================================================================================================================
+import React, { createContext, useContext } from "react";
+
+const UserContext = createContext();
+
+function App() {
+  const user = { name: "Riyaz", role: "Admin" };
+  return (
+    <UserContext.Provider value={user}>
+      <GrandChild />
+    </UserContext.Provider>
+  );
+}
+
+function GrandChild() {
+  const user = useContext(UserContext);
+  return <h1>Welcome, {user.name}</h1>;
+}
+👉 Now, GrandChild directly consumes the data without passing through Parent or Child.
+
+
+✅ In short:
+The Context API is a built-in way in React to manage global state and avoid prop drilling, making your code cleaner and more maintainable.
+
+
+==========================================================================================================================================================================
+createContext : To initiate Context API.
+Provider : use for update or provide data.
+useContext : get data from context api.
