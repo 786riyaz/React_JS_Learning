@@ -1,0 +1,34 @@
+Router is useful when we want to create routes in out app.
+
+here are some examples of routes like learn, community, blog
+https://react.dev/learn
+https://react.dev/community
+https://react.dev/blog
+
+
+
+Official Website of React Router ::: 
+https://reactrouter.com/
+
+Documentation Page :: 
+https://reactrouter.com/home
+
+
+We can use React Router in 3 ways :: 
+Declarative
+Data
+Framework
+
+
+Here we are going with Declarative Mode ===>
+Command to install react router ::: 
+npm i react-router
+"react-router": "^7.9.2",
+===========================================================
+BrowserRouter:- This component enables client-side routing using the browser's history API.
+
+Routes:- It's responsible for rendering the appropriate component based on the current URL
+
+Route:- Each Route component defines a path and the corresponding component to render when that path is matched.
+
+Link:- A link for navigate from 1 page to other page
