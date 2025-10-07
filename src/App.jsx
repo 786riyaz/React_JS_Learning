@@ -1,64 +1,183 @@
-import { useState, useActionState } from "react";
-
-const nameRegex = /^[A-Za-z ]+$/;
-const emailRegex = /^[a-z0-9]+@[a-z]+.[a-z]+$/;
+import { useEffect, useState, useRef } from "react";
+import "./css/style.css";
 
 export default function App() {
-  const [error, setError] = useState(false);
-  const [success, setSuccess] = useState(false);
+  const [userName, setUserName] = useState("User1");
+  const [messages, setMessages] = useState([]);
+  const [message, setMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const messagesEndRef = useRef(null);
+  const pollingIntervalRef = useRef(null);
+  const [shouldAutoScroll, setShouldAutoScroll] = useState(true);
 
-  const validateData = (prevData, formData) => {
-    console.log("Name :", formData.get("name"));
-    console.log("password :", formData.get("password"));
-    console.log("Age :", formData.get("age"));
-    console.log("Email :", formData.get("email"));
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
-    const name = formData.get("name");
-    const password = formData.get("password");
-    const age = formData.get("age");
-    const email = formData.get("email");
-
-    if (name && password && age && email) {
-      if (!nameRegex.test(name)) {
-        console.log("Invalid Name");
-        setError("Invalid Name");
-        return {name, password, age, email};
-      } else if (!emailRegex.test(email)) {
-        console.log("Invalid Email");
-        setError("Invalid Email");
-        return {name, password, age, email};
-      } else {
-        setError(false);
-        setSuccess("Data Submitted Successfully");
+  const fetchMessages = async (showLoading = false) => {
+    try {
+      if (showLoading) {
+        setIsLoading(true);
       }
-    } else {
-      console.log("Please Enter all the values");
-      setError("Please Enter all the values");
-      // alert("Please Enter all the values");
-      return {name, password, age, email};
+      
+      const chatting = await fetch(
+        "https://mern-chatting-application.vercel.app/getAllMessage"
+      );
+      const chattingData = await chatting.json();
+      console.log("Fetched messages:", chattingData);
+      
+      // Check if there are new messages
+      const hasNewMessages = chattingData.length > messages.length;
+      setMessages(chattingData);
+      
+      // Only auto-scroll if there are new messages and user hasn't scrolled up
+      if (hasNewMessages && shouldAutoScroll) {
+        setTimeout(scrollToBottom, 100);
+      }
+    } catch (error) {
+      console.error("Error fetching messages:", error);
+    } finally {
+      if (showLoading) {
+        setIsLoading(false);
+      }
     }
   };
 
-  const [data, action, pending] = useActionState(validateData);
-  console.log("Form Data ::::", data);
+  const sendMessage = async () => {
+    if (message.trim() === "") return; // Prevent sending empty messages
+
+    const newMessage = {
+      userName: userName,
+      message: message,
+      timestamp: new Date().toISOString(),
+    };
+
+    // Optimistically update UI
+    setMessages(prevMessages => [...prevMessages, newMessage]);
+    setMessage(""); // Clear the input field after sending
+    
+    // Always scroll to bottom when user sends a message
+    setShouldAutoScroll(true);
+    setTimeout(scrollToBottom, 100);
+
+    try {
+      let response = await fetch(
+        "https://mern-chatting-application.vercel.app/addMessage",
+        {
+          method: "POST",
+          body: JSON.stringify(newMessage),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      
+      if (response.ok) {
+        console.log("Message sent successfully:", await response.json());
+        
+        // Immediately fetch latest messages after successful send
+        // This bypasses the 30-second polling interval
+        await fetchMessages(true); // Show loading indicator
+      } else {
+        console.error("Failed to send message:", response.status);
+      }
+    } catch (error) {
+      console.error("Error sending message:", error);
+      // Optionally revert the optimistic update on error
+    }
+  };
+
+  useEffect(() => {
+    document.title = `Welcome ${userName}`;
+
+    // Initial fetch
+    fetchMessages();
+
+    // Set up polling for new messages every 30 seconds
+    pollingIntervalRef.current = setInterval(() => {
+      fetchMessages();
+    }, 30000);
+
+    // Cleanup interval on component unmount or user change
+    return () => {
+      if (pollingIntervalRef.current) {
+        clearInterval(pollingIntervalRef.current);
+      }
+    };
+  }, [userName]);
+
+  // Handle scroll detection
+  const handleScroll = (e) => {
+    const { scrollTop, scrollHeight, clientHeight } = e.target;
+    const isAtBottom = scrollTop + clientHeight >= scrollHeight - 10; // 10px threshold
+    setShouldAutoScroll(isAtBottom);
+  };
 
   return (
-    <div className="App">
-      <h1>User Form</h1>
-      <form action={action}>
-        <input type="text" name="name" defaultValue={data?.name} placeholder="Enter User Name"/>
-        <br />
-        <input type="password" name="password" defaultValue={data?.password} placeholder="Enter Password"/>
-        <br />
-        <input type="number" name="age" defaultValue={data?.age} placeholder="Enter Age"/>
-        <br />
-        <input type="email" name="email" defaultValue={data?.email} placeholder="Enter Email ID"/>
-        <br />
-        <span style={{ color: "red" }}>{error ? error : null}</span>
-        <span style={{ color: "green" }}>{success ? success : null}</span>
-        <br />
-        <button>Submit</button>
-      </form>
+    <div className="chat-container">
+      <h3 className="Header">💬 Chatting Application</h3>
+
+      <div className="user-section">
+        <select
+          name="userName"
+          id="userNameDD"
+          className="user-select"
+          onChange={(e) => setUserName(e.target.value)}
+          value={userName}
+          disabled={true}
+        >
+          <option value="Riyaz">Riyaz</option>
+          <option value="Arbaz">Arbaz</option>
+          <option value="User1">User1</option>
+          <option value="Tasin">Tasin</option>
+        </select>
+
+        <h3 className="heading">Welcome, {userName}! 👋</h3>
+      </div>
+
+      <div className="messages-container" onScroll={handleScroll}>
+        {messages.map((msg, index) => (
+          <div
+            key={index}
+            className={`message ${msg.userName === userName ? "own" : "other"}`}
+          >
+            <div className="message-bubble">
+              <div className="message-user">{msg.userName}</div>
+              <div className="message-text">{msg.message}</div>
+            </div>
+            <div className="message-time">
+              {new Date(msg.timestamp).toLocaleString()}
+            </div>
+          </div>
+        ))}
+        <div ref={messagesEndRef} />
+        {isLoading && (
+          <div className="loading-indicator">
+            <div className="loading-spinner"></div>
+            <span>Syncing messages...</span>
+          </div>
+        )}
+      </div>
+
+      <div className="input-section">
+        <input
+          placeholder="Type your message here..."
+          type="text"
+          className="message-input"
+          value={message}
+          onChange={(event) => {
+            setMessage(event.target.value);
+          }}
+          onKeyPress={(e) => {
+            if (e.key === "Enter") {
+              sendMessage();
+            }
+          }}
+        />
+        <button className="send-button" onClick={sendMessage}>
+          Send 📤
+        </button>
+      </div>
     </div>
   );
 }
