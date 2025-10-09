@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import "./css/style.css";
 
 export default function App() {
-  const [userName, setUserName] = useState("Riyaz");
+  const [userName, setUserName] = useState("User1");
   const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
