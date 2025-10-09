@@ -152,7 +152,7 @@ export default function App() {
             }}
           >
             <option value="5">5 seconds</option>
-            <option value="10">10 seconds</option>
+            <option value="10" selected>10 seconds</option>
             <option value="30">30 seconds</option>
             <option value="1m">1 Minute</option>
           </select>
