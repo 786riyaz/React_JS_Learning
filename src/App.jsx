@@ -10,19 +10,21 @@ export default function App() {
   const pollingIntervalRef = useRef(null);
   const [shouldAutoScroll, setShouldAutoScroll] = useState(true);
   const [refreshInterval, setRefreshInterval] = useState(5000); // Default 5 seconds
+  const [messageLimit, setMessageLimit] = useState(20); // Default 20 messages
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   const fetchMessages = async (showLoading = false) => {
+    console.log(`Fetching messages with limit: ${messageLimit}`);
     try {
       if (showLoading) {
         setIsLoading(true);
       }
       
       const chatting = await fetch(
-        "https://mern-chatting-application.vercel.app/getAllMessage"
+        `https://mern-chatting-application.vercel.app/getAllMessage?limit=${messageLimit}`
       );
       const chattingData = await chatting.json();
       console.log("Fetched messages:", chattingData);
@@ -63,7 +65,7 @@ export default function App() {
 
     try {
       let response = await fetch(
-        "https://mern-chatting-application.vercel.app/addMessage",
+        `https://mern-chatting-application.vercel.app/addMessage`,
         {
           method: "POST",
           body: JSON.stringify(newMessage),
@@ -138,6 +140,7 @@ export default function App() {
           onChange={(e) => {
             const value = e.target.value;
             const ms = value === "1m" ? 60000 : parseInt(value) * 1000;
+            console.log(`Refresh time changed to: ${value === "1m" ? "1 minute" : value + " seconds"}`);
             setRefreshInterval(ms);
           }}
         >
@@ -146,6 +149,22 @@ export default function App() {
           <option value="30">30 seconds</option>
           <option value="1m">1 Minute</option>
         </select>
+        Message Limit :: <select 
+          name="messageLimit" 
+          id="messageLimitDD"
+          value={messageLimit}
+          onChange={(e) => {
+            const value = parseInt(e.target.value);
+            console.log(`Message limit changed to: ${value} messages`);
+            setMessageLimit(value);
+          }}
+        >
+          <option value="10">10 messages</option>
+          <option value="20">20 messages</option>
+          <option value="30">30 messages</option>
+          <option value="50">50 messages</option>
+          <option value="100">100 messages</option>
+        </select>
         <button className="refresh-button" onClick={() => fetchMessages(true)}>
           Refresh Now🔄
         </button>
@@ -153,7 +172,7 @@ export default function App() {
       </div>
 
       <div className="messages-container" onScroll={handleScroll}>
-        {messages.map((msg, index) => (
+        {messages.slice(-messageLimit).map((msg, index) => (
           <div
             key={index}
             className={`message ${msg.userName === userName ? "own" : "other"}`}
