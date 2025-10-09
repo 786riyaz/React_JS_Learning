@@ -2,13 +2,14 @@ import { useEffect, useState, useRef } from "react";
 import "./css/style.css";
 
 export default function App() {
-  const [userName, setUserName] = useState("User1");
+  const [userName, setUserName] = useState("Riyaz");
   const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef(null);
   const pollingIntervalRef = useRef(null);
   const [shouldAutoScroll, setShouldAutoScroll] = useState(true);
+  const [refreshInterval, setRefreshInterval] = useState(5000); // Default 5 seconds
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -93,18 +94,18 @@ export default function App() {
     // Initial fetch
     fetchMessages();
 
-    // Set up polling for new messages every 30 seconds
+    // Set up polling for new messages based on selected refresh interval
     pollingIntervalRef.current = setInterval(() => {
       fetchMessages();
-    }, 30000);
+    }, refreshInterval);
 
-    // Cleanup interval on component unmount or user change
+    // Cleanup interval on component unmount, user change, or refresh interval change
     return () => {
       if (pollingIntervalRef.current) {
         clearInterval(pollingIntervalRef.current);
       }
     };
-  }, [userName]);
+  }, [userName, refreshInterval]);
 
   // Handle scroll detection
   const handleScroll = (e) => {
@@ -131,7 +132,23 @@ export default function App() {
           <option value="User1">User1</option>
           <option value="Tasin">Tasin</option>
         </select>
-
+        Refresh Time :: <select 
+          name="refreshTime" 
+          id="refreshTimeDD"
+          onChange={(e) => {
+            const value = e.target.value;
+            const ms = value === "1m" ? 60000 : parseInt(value) * 1000;
+            setRefreshInterval(ms);
+          }}
+        >
+          <option value="5">5 seconds</option>
+          <option value="10">10 seconds</option>
+          <option value="30">30 seconds</option>
+          <option value="1m">1 Minute</option>
+        </select>
+        <button className="refresh-button" onClick={() => fetchMessages(true)}>
+          Refresh Now🔄
+        </button>
         <h3 className="heading">Welcome, {userName}! 👋</h3>
       </div>
 
