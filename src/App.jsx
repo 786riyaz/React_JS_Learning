@@ -11,6 +11,7 @@ export default function App() {
   const [shouldAutoScroll, setShouldAutoScroll] = useState(true);
   const [refreshInterval, setRefreshInterval] = useState(10000); // Default 10 seconds
   const [messageLimit, setMessageLimit] = useState(10); // Default 10 messages
+  const [showControls, setShowControls] = useState(false); // Mobile controls toggle
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -118,10 +119,19 @@ export default function App() {
   };
 
   return (
-    <div className="chat-container">
+    <div className="container">
       <h3 className="Header">💬 Chatting Application</h3>
 
       <div className="user-section">
+        <button
+          className="controls-toggle"
+          aria-label="Toggle controls"
+          onClick={() => setShowControls(prev => !prev)}
+        >
+          ☰
+        </button>
+
+        <div className={`controls-panel ${showControls ? 'open' : ''}`}>
         <div className="select-group">
           <label htmlFor="userNameDD">User Name:</label>
           <select
@@ -182,6 +192,7 @@ export default function App() {
           <span className="button-icon">🔄</span>
           <span className="button-text">Refresh Now</span>
         </button>
+        </div>
         
         <h3 className="heading">Welcome, {userName}! 👋</h3>
       </div>
