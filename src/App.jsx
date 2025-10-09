@@ -9,8 +9,8 @@ export default function App() {
   const messagesEndRef = useRef(null);
   const pollingIntervalRef = useRef(null);
   const [shouldAutoScroll, setShouldAutoScroll] = useState(true);
-  const [refreshInterval, setRefreshInterval] = useState(5000); // Default 5 seconds
-  const [messageLimit, setMessageLimit] = useState(20); // Default 20 messages
+  const [refreshInterval, setRefreshInterval] = useState(10000); // Default 10 seconds
+  const [messageLimit, setMessageLimit] = useState(10); // Default 10 messages
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -24,6 +24,7 @@ export default function App() {
       }
       
       const chatting = await fetch(
+        // `http://localhost:786/getAllMessage?limit=10`
         `https://mern-chatting-application.vercel.app/getAllMessage?limit=${messageLimit}`
       );
       const chattingData = await chatting.json();
@@ -121,53 +122,67 @@ export default function App() {
       <h3 className="Header">💬 Chatting Application</h3>
 
       <div className="user-section">
-        <select
-          name="userName"
-          id="userNameDD"
-          className="user-select"
-          onChange={(e) => setUserName(e.target.value)}
-          value={userName}
-          disabled={true}
-        >
-          <option value="Riyaz">Riyaz</option>
-          <option value="Arbaz">Arbaz</option>
-          <option value="User1">User1</option>
-          <option value="Tasin">Tasin</option>
-        </select>
-        Refresh Time :: <select 
-          name="refreshTime" 
-          id="refreshTimeDD"
-          onChange={(e) => {
-            const value = e.target.value;
-            const ms = value === "1m" ? 60000 : parseInt(value) * 1000;
-            console.log(`Refresh time changed to: ${value === "1m" ? "1 minute" : value + " seconds"}`);
-            setRefreshInterval(ms);
-          }}
-        >
-          <option value="5">5 seconds</option>
-          <option value="10">10 seconds</option>
-          <option value="30">30 seconds</option>
-          <option value="1m">1 Minute</option>
-        </select>
-        Message Limit :: <select 
-          name="messageLimit" 
-          id="messageLimitDD"
-          value={messageLimit}
-          onChange={(e) => {
-            const value = parseInt(e.target.value);
-            console.log(`Message limit changed to: ${value} messages`);
-            setMessageLimit(value);
-          }}
-        >
-          <option value="10">10 messages</option>
-          <option value="20">20 messages</option>
-          <option value="30">30 messages</option>
-          <option value="50">50 messages</option>
-          <option value="100">100 messages</option>
-        </select>
+        <div className="select-group">
+          <label htmlFor="userNameDD">User Name:</label>
+          <select
+            name="userName"
+            id="userNameDD"
+            className="user-select"
+            onChange={(e) => setUserName(e.target.value)}
+            value={userName}
+            disabled={true}
+          >
+            <option value="Riyaz">Riyaz</option>
+            <option value="Arbaz">Arbaz</option>
+            <option value="User1">User1</option>
+            <option value="Tasin">Tasin</option>
+          </select>
+        </div>
+
+        <div className="select-group">
+          <label htmlFor="refreshTimeDD">Refresh Time:</label>
+          <select 
+            name="refreshTime" 
+            id="refreshTimeDD"
+            onChange={(e) => {
+              const value = e.target.value;
+              const ms = value === "1m" ? 60000 : parseInt(value) * 1000;
+              console.log(`Refresh time changed to: ${value === "1m" ? "1 minute" : value + " seconds"}`);
+              setRefreshInterval(ms);
+            }}
+          >
+            <option value="5">5 seconds</option>
+            <option value="10">10 seconds</option>
+            <option value="30">30 seconds</option>
+            <option value="1m">1 Minute</option>
+          </select>
+        </div>
+
+        <div className="select-group">
+          <label htmlFor="messageLimitDD">Message Limit:</label>
+          <select 
+            name="messageLimit" 
+            id="messageLimitDD"
+            value={messageLimit}
+            onChange={(e) => {
+              const value = parseInt(e.target.value);
+              console.log(`Message limit changed to: ${value} messages`);
+              setMessageLimit(value);
+            }}
+          >
+            <option value="10">10 messages</option>
+            <option value="20">20 messages</option>
+            <option value="30">30 messages</option>
+            <option value="50">50 messages</option>
+            <option value="100">100 messages</option>
+          </select>
+        </div>
+
         <button className="refresh-button" onClick={() => fetchMessages(true)}>
-          Refresh Now🔄
+          <span className="button-icon">🔄</span>
+          <span className="button-text">Refresh Now</span>
         </button>
+        
         <h3 className="heading">Welcome, {userName}! 👋</h3>
       </div>
 
@@ -175,14 +190,16 @@ export default function App() {
         {messages.slice(-messageLimit).map((msg, index) => (
           <div
             key={index}
-            className={`message ${msg.userName === userName ? "own" : "other"}`}
+            className={`message ${msg.userName === userName ? "sent" : "received"}`}
           >
-            <div className="message-bubble">
-              <div className="message-user">{msg.userName}</div>
+            <div className="message-content">
               <div className="message-text">{msg.message}</div>
-            </div>
-            <div className="message-time">
-              {new Date(msg.timestamp).toLocaleString()}
+              <div className="message-info">
+                <span className="message-user">{msg.userName}</span>
+                <span className="message-time">
+                  {new Date(msg.timestamp).toLocaleTimeString()}
+                </span>
+              </div>
             </div>
           </div>
         ))}
@@ -196,23 +213,24 @@ export default function App() {
       </div>
 
       <div className="input-section">
-        <input
-          placeholder="Type your message here..."
-          type="text"
-          className="message-input"
-          value={message}
-          onChange={(event) => {
-            setMessage(event.target.value);
-          }}
-          onKeyPress={(e) => {
-            if (e.key === "Enter") {
-              sendMessage();
-            }
-          }}
-        />
-        <button className="send-button" onClick={sendMessage}>
-          Send 📤
-        </button>
+        <div className="input-wrapper">
+          <input
+            type="text"
+            placeholder="Type your message..."
+            className="message-input"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                sendMessage();
+              }
+            }}
+          />
+          <button className="send-button" onClick={sendMessage}>
+            <span className="button-icon">📤</span>
+            <span className="button-text">Send</span>
+          </button>
+        </div>
       </div>
     </div>
   );
