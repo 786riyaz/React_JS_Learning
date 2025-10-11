@@ -1,0 +1,4 @@
+When a single page is opened with multiple routes and the content of page is depends on that route then it is called Dynamic Routing.
+
+When we pass dynamic value in the routes and open page accordingly.
+
