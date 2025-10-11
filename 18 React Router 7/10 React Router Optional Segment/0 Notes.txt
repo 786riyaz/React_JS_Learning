@@ -1,0 +1,2 @@
+http://localhost:5173/en/user/login
+Here 'en', 'user' and 'login' are segments.
