@@ -1,0 +1,15 @@
+A route prefix in React (with React Router) is basically a common starting path that you apply to all your routes. Instead of repeating the same beginning of the URL everywhere, you define it once, and React Router automatically prepends it to every route inside.
+
+For example:
+If you set the prefix to `/myapp`, then:
+   The `home` route actually becomes `/myapp/home`.
+   The `about` route actually becomes `/myapp/about`.
+
+This is useful when:
+ You’re deploying your app inside a subfolder on a server (like `example.com/myapp/` instead of `example.com/`).
+ You want to organize routes under a section, like grouping everything under `/admin` or `/dashboard`.
+
+So in simple terms:
+👉 A route prefix is just a base path that gets automatically added to all your routes so you don’t need to repeat it manually.
+
+Would you like me to also explain the difference between a prefix and nested routes?
