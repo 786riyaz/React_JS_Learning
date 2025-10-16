@@ -1,0 +1,10 @@
+Dummy API ===>
+https://dummyjson.com/users
+https://dummyjson.com/products
+
+
+API Methods ==>
+GET :: to get data
+POST :: to add data
+PUT/PATCH :: to update data
+DELETE :: to delete data
