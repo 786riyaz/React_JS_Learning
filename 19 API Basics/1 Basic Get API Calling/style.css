@@ -1,0 +1,22 @@
+h1{
+  text-decoration: underline;
+}
+
+table {
+  text-align: center;
+  border: 2px solid black;
+
+  /* centers the table horizontally */
+  margin: 20px auto;
+
+  /*  makes borders cleaner */
+  border-collapse: collapse;
+
+  /* optional, to control table width */
+  width: 60%;
+}
+
+td, th {
+  border: 2px solid black;
+  padding: 3px;
+}
