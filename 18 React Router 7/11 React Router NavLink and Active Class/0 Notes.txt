@@ -1,0 +1,2 @@
+We can use NavLink to nevigate from one page to another page using react router.
+NavLink provides the Active Class to highlight the curent page Name in navigation bar.

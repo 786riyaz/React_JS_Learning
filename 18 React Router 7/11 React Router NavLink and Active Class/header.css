@@ -1,0 +1,38 @@
+.header {
+  /* border: 2px solid green; */
+  background-color: lightblue;
+  display: flex;
+  justify-content: space-between; /* logo left, nav right */
+  align-items: center; /* vertical centering */
+  padding: 10px;
+}
+
+.nav-links {
+  /* border: 2px solid red; */
+  list-style: none;
+  display: flex; /* make nav items horizontal */
+  gap: 20px; /* spacing between items */
+  margin: 0;
+  padding: 0;
+  align-items: center; /* vertically center items */
+}
+
+li {
+  /* border: 2px solid blue; */
+  text-decoration: none;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+}
+
+.logo {
+  text-decoration: none;
+}
+
+.active{
+  /* border:2px solid red; */
+  font-weight: 900;
+  font-size: large;
+}
