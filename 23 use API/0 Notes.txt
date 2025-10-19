@@ -1,0 +1,23 @@
+🔹 What is use API in React?
+The use API is not like hooks (useState, useEffect, etc.).
+It’s a new experimental API that lets you unwrap promises or contexts directly inside components.
+
+If you pass a Promise to use(), React will automatically:
+    Suspend the component until the promise resolves.
+    Resume rendering once the data is available.
+    If the promise rejects → it throws an error React can catch with an error boundary.
+
+If you pass a context (like MyContext), use(MyContext) works like useContext(MyContext).
+
+
+So, use is basically a universal data reader:
+Reads async values (promises).
+Reads context values.
+
+==================================================================================================== 
+🔹 Why is this powerful?
+Normally you’d need useEffect + useState for data fetching.
+With use(), React natively integrates async/await into rendering.
+==================================================================================================== 
+✅ In short:
+The example shows how the use API lets you fetch data as a promise and directly consume it inside a component. React handles suspending the component until the data arrives, showing the Suspense fallback in the meantime.
