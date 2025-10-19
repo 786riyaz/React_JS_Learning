@@ -13,6 +13,28 @@ export default function App() {
   const [messageLimit, setMessageLimit] = useState(10); // Default 10 messages
   const [showControls, setShowControls] = useState(false); // Mobile controls toggle
 
+  const backEndURL = import.meta.env.VITE_BACKEND_URL;
+  // console.log("Backend URL:", backEndURL);
+
+  useEffect(() => {
+    document.title = `Welcome ${userName}`;
+
+    // Initial fetch
+    fetchMessages();
+
+    // Set up polling for new messages based on selected refresh interval
+    pollingIntervalRef.current = setInterval(() => {
+      fetchMessages();
+    }, refreshInterval);
+
+    // Cleanup interval on component unmount, user change, or refresh interval change
+    return () => {
+      if (pollingIntervalRef.current) {
+        clearInterval(pollingIntervalRef.current);
+      }
+    };
+  }, [userName, refreshInterval, messageLimit]);
+
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -23,18 +45,18 @@ export default function App() {
       if (showLoading) {
         setIsLoading(true);
       }
-      
+
       const chatting = await fetch(
-        // `http://localhost:786/getAllMessage?limit=10`
-        `https://mern-chatting-application.vercel.app/getAllMessage?limit=${messageLimit}`
+        `${backEndURL}/getAllMessage?limit=${messageLimit}`
       );
+      console.log("Fetched Response ::", chatting);
       const chattingData = await chatting.json();
       console.log("Fetched messages:", chattingData);
-      
+
       // Check if there are new messages
       const hasNewMessages = chattingData.length > messages.length;
       setMessages(chattingData);
-      
+
       // Only auto-scroll if there are new messages and user hasn't scrolled up
       if (hasNewMessages && shouldAutoScroll) {
         setTimeout(scrollToBottom, 100);
@@ -58,28 +80,25 @@ export default function App() {
     };
 
     // Optimistically update UI
-    setMessages(prevMessages => [...prevMessages, newMessage]);
+    setMessages((prevMessages) => [...prevMessages, newMessage]);
     setMessage(""); // Clear the input field after sending
-    
+
     // Always scroll to bottom when user sends a message
     setShouldAutoScroll(true);
     setTimeout(scrollToBottom, 100);
 
     try {
-      let response = await fetch(
-        `https://mern-chatting-application.vercel.app/addMessage`,
-        {
-          method: "POST",
-          body: JSON.stringify(newMessage),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      
+      let response = await fetch(`${backEndURL}/addMessage`, {
+        method: "POST",
+        body: JSON.stringify(newMessage),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
       if (response.ok) {
         console.log("Message sent successfully:", await response.json());
-        
+
         // Immediately fetch latest messages after successful send
         // This bypasses the 30-second polling interval
         await fetchMessages(true); // Show loading indicator
@@ -91,25 +110,6 @@ export default function App() {
       // Optionally revert the optimistic update on error
     }
   };
-
-  useEffect(() => {
-    document.title = `Welcome ${userName}`;
-
-    // Initial fetch
-    fetchMessages();
-
-    // Set up polling for new messages based on selected refresh interval
-    pollingIntervalRef.current = setInterval(() => {
-      fetchMessages();
-    }, refreshInterval);
-
-    // Cleanup interval on component unmount, user change, or refresh interval change
-    return () => {
-      if (pollingIntervalRef.current) {
-        clearInterval(pollingIntervalRef.current);
-      }
-    };
-  }, [userName, refreshInterval]);
 
   // Handle scroll detection
   const handleScroll = (e) => {
@@ -126,74 +126,83 @@ export default function App() {
         <button
           className="controls-toggle"
           aria-label="Toggle controls"
-          onClick={() => setShowControls(prev => !prev)}
+          onClick={() => setShowControls((prev) => !prev)}
         >
           ☰
         </button>
 
-        <div className={`controls-panel ${showControls ? 'open' : ''}`}>
-        <div className="select-group">
-          <label htmlFor="userNameDD">User Name:</label>
-          <select
-            name="userName"
-            id="userNameDD"
-            className="user-select"
-            onChange={(e) => setUserName(e.target.value)}
-            value={userName}
-            disabled={true}
+        <div className={`controls-panel ${showControls ? "open" : ""}`}>
+          <div className="select-group">
+            <label htmlFor="userNameDD">User Name:</label>
+            <select
+              name="userName"
+              id="userNameDD"
+              className="user-select"
+              onChange={(e) => setUserName(e.target.value)}
+              value={userName}
+              disabled={true}
+            >
+              <option value="Riyaz">Riyaz</option>
+              <option value="Arbaz">Arbaz</option>
+              <option value="User1">User1</option>
+              <option value="Tasin">Tasin</option>
+            </select>
+          </div>
+
+          <div className="select-group">
+            <label htmlFor="refreshTimeDD">Refresh Time:</label>
+            <select
+              name="refreshTime"
+              id="refreshTimeDD"
+              onChange={(e) => {
+                const value = e.target.value;
+                const ms = value === "1m" ? 60000 : parseInt(value) * 1000;
+                console.log(
+                  `Refresh time changed to: ${
+                    value === "1m" ? "1 minute" : value + " seconds"
+                  }`
+                );
+                setRefreshInterval(ms);
+              }}
+            >
+              <option value="5">5 seconds</option>
+              <option value="10" selected>
+                10 seconds
+              </option>
+              <option value="30">30 seconds</option>
+              <option value="1m">1 Minute</option>
+            </select>
+          </div>
+
+          <div className="select-group">
+            <label htmlFor="messageLimitDD">Message Limit:</label>
+            <select
+              name="messageLimit"
+              id="messageLimitDD"
+              value={messageLimit}
+              onChange={(e) => {
+                const value = parseInt(e.target.value);
+                console.log(`Message limit changed to: ${value} messages`);
+                setMessageLimit(value);
+              }}
+            >
+              <option value="10">10 messages</option>
+              <option value="20">20 messages</option>
+              <option value="30">30 messages</option>
+              <option value="50">50 messages</option>
+              <option value="100">100 messages</option>
+            </select>
+          </div>
+
+          <button
+            className="refresh-button"
+            onClick={() => fetchMessages(true)}
           >
-            <option value="Riyaz">Riyaz</option>
-            <option value="Arbaz">Arbaz</option>
-            <option value="User1">User1</option>
-            <option value="Tasin">Tasin</option>
-          </select>
+            <span className="button-icon">🔄</span>
+            <span className="button-text">Refresh Now</span>
+          </button>
         </div>
 
-        <div className="select-group">
-          <label htmlFor="refreshTimeDD">Refresh Time:</label>
-          <select 
-            name="refreshTime" 
-            id="refreshTimeDD"
-            onChange={(e) => {
-              const value = e.target.value;
-              const ms = value === "1m" ? 60000 : parseInt(value) * 1000;
-              console.log(`Refresh time changed to: ${value === "1m" ? "1 minute" : value + " seconds"}`);
-              setRefreshInterval(ms);
-            }}
-          >
-            <option value="5">5 seconds</option>
-            <option value="10" selected>10 seconds</option>
-            <option value="30">30 seconds</option>
-            <option value="1m">1 Minute</option>
-          </select>
-        </div>
-
-        <div className="select-group">
-          <label htmlFor="messageLimitDD">Message Limit:</label>
-          <select 
-            name="messageLimit" 
-            id="messageLimitDD"
-            value={messageLimit}
-            onChange={(e) => {
-              const value = parseInt(e.target.value);
-              console.log(`Message limit changed to: ${value} messages`);
-              setMessageLimit(value);
-            }}
-          >
-            <option value="10">10 messages</option>
-            <option value="20">20 messages</option>
-            <option value="30">30 messages</option>
-            <option value="50">50 messages</option>
-            <option value="100">100 messages</option>
-          </select>
-        </div>
-
-        <button className="refresh-button" onClick={() => fetchMessages(true)}>
-          <span className="button-icon">🔄</span>
-          <span className="button-text">Refresh Now</span>
-        </button>
-        </div>
-        
         <h3 className="heading">Welcome, {userName}! 👋</h3>
       </div>
 
@@ -201,7 +210,9 @@ export default function App() {
         {messages.slice(-messageLimit).map((msg, index) => (
           <div
             key={index}
-            className={`message ${msg.userName === userName ? "sent" : "received"}`}
+            className={`message ${
+              msg.userName === userName ? "sent" : "received"
+            }`}
           >
             <div className="message-content">
               <div className="message-text">{msg.message}</div>
