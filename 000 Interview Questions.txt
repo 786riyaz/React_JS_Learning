@@ -1,0 +1,137 @@
+### 🧩 **1. What is Lifting State Up in React?**
+
+**Definition:**
+Lifting State Up means **moving the state** from a child component to a **common parent component** so that multiple child components can share and sync data through **props**.
+
+**Example:**
+function Parent() {
+  const [count, setCount] = useState(0);
+  return (
+    <>
+      <ChildA count={count} />
+      <ChildB setCount={setCount} />
+    </>
+  );
+}
+
+Here, the state is **lifted** to the parent, allowing both `ChildA` and `ChildB` to use or modify it.
+
+**Why:**
+It ensures **data consistency** between components and avoids duplicate state.
+
+---
+
+### 🌐 **2. What is React Context?**
+
+**Definition:**
+React Context is used to **share data globally** across the component tree **without passing props manually** through every level.
+
+**Use Case:**
+Sharing **theme, language, user info, or authentication state**.
+
+**Example:**
+
+
+const ThemeContext = React.createContext();
+
+function App() {
+  return (
+    <ThemeContext.Provider value="dark">
+      <Toolbar />
+    </ThemeContext.Provider>
+  );
+}
+
+function Toolbar() {
+  const theme = useContext(ThemeContext);
+  return <div>Current theme: {theme}</div>;
+}
+
+
+**Why:**
+It helps avoid **“prop drilling”** — passing props through many nested components.
+
+---
+
+### 🎨 **3. Different Ways of Adding CSS in React**
+
+There are **multiple ways** to style components:
+
+| Method                        | Description                   | Example                                                                   |
+| ----------------------------- | ----------------------------- | ------------------------------------------------------------------------- |
+| **Inline CSS**                | Using the `style` prop        | `<div style={{color: "red"}}>`                                            |
+| **External CSS File**         | Importing a `.css` file       | `import "./App.css"`                                                      |
+| **CSS Modules**               | Scoped CSS using module files | `import styles from './App.module.css';` → `<div className={styles.box}>` |
+| **Styled Components**         | CSS-in-JS library             | `const Button = styled.button\`background: blue;``                        |
+| **Tailwind / Sass / Emotion** | Framework-based styling       | `<div className="bg-blue-500 p-4">Hello</div>`                            |
+
+---
+
+### 🔥 **4. What is Hot Module Replacement (HMR)?**
+
+**Definition:**
+HMR allows React (via bundlers like Vite or Webpack) to **update code in the browser without a full page reload**.
+
+**Benefit:**
+
+* Preserves **component state** while updating UI instantly.
+* Improves **developer productivity** during development.
+
+Example: When you edit a component, only that component re-renders — not the entire app.
+
+---
+
+### ⚙️ **5. Use of Parcel, Vite, and Webpack**
+
+These are **build tools and bundlers** that prepare React apps for development and production.
+
+| Tool        | Description                    | Key Features                                               |
+| ----------- | ------------------------------ | ---------------------------------------------------------- |
+| **Webpack** | Powerful, customizable bundler | Supports loaders, plugins, HMR, code splitting             |
+| **Vite**    | Modern dev server + bundler    | Super fast startup, native ES modules, built for React/Vue |
+| **Parcel**  | Zero-config bundler            | Auto-detects config, supports HMR, fast builds             |
+
+**In short:**
+They handle tasks like bundling JavaScript, optimizing assets, transpiling JSX, and serving development builds.
+
+---
+
+### 🌲 **6. What is Tree Shaking?**
+
+**Definition:**
+Tree shaking is a **dead code elimination technique** used in bundlers like Webpack or Vite to **remove unused imports** from the final bundle.
+
+**Example:**
+
+js
+// utils.js
+export function used() {}
+export function unused() {}
+
+// main.js
+import { used } from './utils'; // only "used" will stay in final build
+
+
+**Benefit:**
+Reduces bundle size → faster app loading.
+
+---
+
+### 📦 **7. Difference Between `dependency` and `devDependency`**
+
+| Type                | Description                                 | Example                      |
+| ------------------- | ------------------------------------------- | ---------------------------- |
+| **dependencies**    | Needed **at runtime** (for the app to work) | React, ReactDOM, Axios       |
+| **devDependencies** | Needed **only during development/build**    | Babel, ESLint, Webpack, Jest |
+
+**Defined in `package.json`:**
+
+json
+{
+  "dependencies": {
+    "react": "^18.0.0"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}
