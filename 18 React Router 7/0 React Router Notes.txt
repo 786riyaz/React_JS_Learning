@@ -1,4 +1,4 @@
-Router is useful when we want to create routes in out app.
+Router is useful when we want to create routes in our app.
 
 here are some examples of routes like learn, community, blog
 https://react.dev/learn

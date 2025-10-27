@@ -1,0 +1,11 @@
+A controller Component is a form whose input field value is controllered by React' State
+
+How it Works :::
+    Store input field value in State
+    Use Change handler with input field
+    Value attribute attached with State
+
+Benefits :::
+    single source of truth
+    validation and manipulation before submit
+    dynamic updates values
