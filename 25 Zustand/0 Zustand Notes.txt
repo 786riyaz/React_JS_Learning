@@ -1,0 +1,2 @@
+Zustand is a state management library
+similar to react context and redux. 

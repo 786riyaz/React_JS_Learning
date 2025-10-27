@@ -1,0 +1,17 @@
+Redux is a state management library
+similar to react context.
+
+we can use react Redux via Redux toolkit
+
+URL for React Redux Toolkit ::: 
+https://redux-toolkit.js.org/tutorials/quick-start
+
+installation Command ::: 
+npm install @reduxjs/toolkit react-redux
+
+
+
+import { configureStore } from '@reduxjs/toolkit'
+export const store = configureStore({
+  reducer: {},
+})
