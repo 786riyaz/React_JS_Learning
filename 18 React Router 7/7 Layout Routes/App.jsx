@@ -13,15 +13,14 @@ export default function App() {
   return (
     <>
       {/* <Navbar /> */}
-      
 
-        <Routes>
-      <Route element={<Navbar/>}>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/login" element={<Login />} />
+      <Routes>
+        <Route element={<Navbar />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/login" element={<Login />} />
         </Route>
-        
+
         <Route path="/college" element={<College />}>
           <Route index element={<Student />} />
           {/* index will load the content of this route by default */}

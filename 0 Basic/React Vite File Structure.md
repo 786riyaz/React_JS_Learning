@@ -1,11 +1,3 @@
-<img src="https://r2cdn.perplexity.ai/pplx-full-logo-primary-dark%402x.png" style="height:64px;margin-right:32px"/>
-
-# I want a proper text file so i can copy in single click
-
-Here is a ready-to-copy text file explaining the React + Vite project structure, combining your detailed notes and expert recommendations.[^1][^2][^3][^5][^9]
-
-***
-
 React + Vite Project Structure Explained
 ========================================
 
@@ -111,27 +103,3 @@ Quick Summary
 - vite.config.js – Vite build, alias, and plugin settings.
 
 This structure keeps your React + Vite project easy to manage, scalable as features grow, and simple for collaboration and deployment.
-
----
-<span style="display:none">[^4][^6][^7][^8]</span>
-
-<div style="text-align: center">⁂</div>
-
-[^1]: https://vite.dev/guide/
-
-[^2]: https://www.robinwieruch.de/react-folder-structure/
-
-[^3]: https://codeparrot.ai/blogs/a-beginners-guide-to-using-vite-react
-
-[^4]: https://github.com/dan5py/react-vite-shadcn-ui
-
-[^5]: https://dev.to/shubhadip_bhowmik/best-folder-structure-for-react-complex-projects-432p
-
-[^6]: https://react.dev/learn/build-a-react-app-from-scratch
-
-[^7]: https://blog.stackademic.com/crafting-the-perfect-react-project-a-comprehensive-guide-to-directory-structure-and-essential-9bb0e32ba7aa
-
-[^8]: https://github.com/RicardoValdovinos/vite-react-boilerplate
-
-[^9]: https://www.saketbhatnagar.in/react/react-folder-structure
-

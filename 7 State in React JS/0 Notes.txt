@@ -8,6 +8,6 @@ We have to import the State to use and will be used with Hooks
 
 ==================================
 
-Hook are the special feature of React which workds with Functional components
+Hook are the special feature of React which works with Functional components
 anything starts from word "use" then they are hooks like ..
 useState, useContext, useEffect, useId etc

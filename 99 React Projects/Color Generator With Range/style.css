@@ -1,0 +1,18 @@
+h1 {
+  text-decoration: underline;
+}
+
+.colorBox {
+  border: 5px solid;
+  margin: auto;
+  width: 200px;
+  height: 200px;
+}
+
+button{
+  margin:3px
+}
+
+table{
+  margin: auto;
+}
