@@ -1,0 +1,20 @@
+React.js (Frontend Framework)
+🔹 Core Concepts
+Virtual DOM and reconciliation
+JSX and rendering
+Functional vs Class components
+Props vs State
+Component lifecycle (or hooks equivalents)
+Conditional rendering and list rendering
+Controlled vs Uncontrolled components
+🔹 Hooks (must-know)
+useState, useEffect, useContext, useRef, useMemo, useCallback, custom hooks
+Dependency arrays and cleanup functions
+🔹 Advanced
+Context API and state management (Redux, Zustand, Recoil)
+Performance optimization (memoization, React.memo)
+Error boundaries
+React Router (v6+)
+Server-Side Rendering (Next.js basics)
+Testing (Jest + React Testing Library)
+Vite or Webpack basics
