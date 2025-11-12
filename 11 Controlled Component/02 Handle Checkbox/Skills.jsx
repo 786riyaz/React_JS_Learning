@@ -14,7 +14,6 @@ function Skills() {
     } else {
         console.log("Removing skill ::", event.target.value);
         setSkills([...skills.filter((item)=>item!=event.target.value)])
-        
     }
   }
 
