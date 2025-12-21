@@ -13,6 +13,9 @@ Server Action
 
 Hydration
 
+=====================================================
+
+Improvements in React 19 ::: 
 ref as a prop
 Diffs for hydration errors
 <Context> as a provider
