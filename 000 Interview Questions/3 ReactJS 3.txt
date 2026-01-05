@@ -1,0 +1,308 @@
+### Beginner-Level Questions (1–30)
+
+Question 1 : What is React?
+Answer : React is an open-source JavaScript library for building user interfaces, particularly single-page applications. It uses a component-based approach and virtual DOM for efficient updates.
+
+Question 2 : What are the key features of React?
+Answer : Key features include virtual DOM for performance, JSX for syntax, reusable components, unidirectional data flow, and server-side rendering support.
+
+Question 3 : What is JSX?
+Answer : JSX is a syntax extension for JavaScript that allows writing HTML-like code in React. It compiles to React.createElement calls for better readability.
+
+Question 4 : What is the virtual DOM?
+Answer : Virtual DOM is a lightweight in-memory representation of the real DOM. React uses it to compute minimal updates, improving performance over direct DOM manipulation.
+
+Question 5 : What are components in React?
+Answer : Components are reusable, independent pieces of UI code. They can be functional (simple functions) or class-based (with state and lifecycle methods).
+
+Question 6 : What is the difference between functional and class components?
+Answer : Functional components are simpler functions returning JSX; class components extend React.Component and handle state/lifecycle. Hooks make functionals equivalent.
+
+Question 7 : What are props in React?
+Answer : Props are read-only inputs passed from parent to child components for data sharing. They are immutable and accessed via this.props in classes.
+
+Question 8 : What is state in React?
+Answer : State is mutable data managed within a component. It triggers re-renders when updated via setState or useState hook.
+
+Question 9 : How do props differ from state?
+Answer : Props are passed from parent and immutable; state is internal, mutable, and managed by the component itself.
+
+Question 10 : What are keys in React?
+Answer : Keys are unique identifiers for list items, helping React track changes efficiently without re-rendering the entire list.
+
+Question 11 : What is the purpose of render() in React?
+Answer : render() returns JSX describing the UI. It's called on state/prop changes and must be pure.
+
+Question 12 : What are lifecycle methods in React?
+Answer : Methods like componentDidMount (post-mount), componentDidUpdate (post-update), and componentWillUnmount (pre-unmount) manage component phases.
+
+Question 13 : What is useState hook?
+Answer : useState adds state to functional components, returning [value, setter]. Example: const [count, setCount] = useState(0).
+
+Question 14 : What is the difference between controlled and uncontrolled components?
+Answer : Controlled components use React state for input values; uncontrolled rely on DOM via refs.
+
+Question 15 : How do you handle events in React?
+Answer : Use camelCase attributes like onClick, passing functions. Synthetic events wrap native ones for consistency.
+
+Question 16 : What is a higher-order component (HOC)?
+Answer : HOC is a function that takes a component and returns an enhanced one, enabling code reuse like authentication.
+
+Question 17 : What is React Router?
+Answer : A library for handling navigation in React apps, using components like `<Route>` for URL mapping.
+
+Question 18 : What are hooks in React?
+Answer : Hooks like useState and useEffect add state and lifecycle to functional components, introduced in React 16.8.
+
+Question 19 : What is the useEffect hook?
+Answer : Handles side effects like data fetching. Runs after render; dependencies control re-runs.
+
+Question 20 : What is conditional rendering?
+
+```
+Answer : Use if-statements, ternary operators, or && to render based on conditions, e.g., `{isLoggedIn ? <Dashboard /> : <Login />}`.
+```
+
+Question 21 : What are fragments in React?
+Answer : Fragments group elements without extra DOM nodes, using `<> </>` syntax.
+
+Question 22 : What is PropTypes?
+Answer : A library for type-checking props, ensuring correct data types during development.
+
+Question 23 : What is the purpose of keys in lists?
+Answer : Keys help React identify changed items, optimizing re-renders.
+
+Question 24 : How do you create a React app?
+Answer : Use create-react-app CLI: `npx create-react-app my-app`.
+
+Question 25 : What is the difference between React and React Native?
+Answer : React is for web UIs; React Native is for mobile apps using native components.
+
+Question 26 : What is reconciliation in React?
+Answer : The process of comparing virtual DOM trees to update the real DOM minimally.
+
+Question 27 : What are pure components?
+Answer : Components that optimize by shallow-comparing props/state to avoid unnecessary renders.
+
+Question 28 : What is context in React?
+Answer : Context shares data globally without prop drilling, using Provider and Consumer.
+
+Question 29 : What are error boundaries?
+Answer : Components catching errors in child trees, displaying fallback UI via componentDidCatch.
+
+Question 30 : How do you optimize React performance?
+Answer : Use memoization, code splitting, lazy loading, and avoid unnecessary re-renders.
+
+### Intermediate-Level Questions (31–60)
+
+Question 31 : What is lifting state up?
+Answer : Moving shared state to a common parent for synchronization across children.
+
+Question 32 : What are refs in React?
+Answer : Refs provide direct DOM access, useful for focus or animations.
+
+Question 33 : What is useReducer hook?
+Answer : Manages complex state logic like Redux reducers: `const [state, dispatch] = useReducer(reducer, initialState)`.
+
+Question 34 : What is useRef hook?
+Answer : Creates mutable references persisting across renders, e.g., for DOM elements.
+
+Question 35 : What is useMemo hook?
+Answer : Memoizes expensive computations, re-running only on dependency changes.
+
+Question 36 : What is useCallback hook?
+Answer : Memoizes functions to prevent recreations, useful for child props.
+
+Question 37 : What is Redux?
+Answer : A state management library with a single store, actions, and reducers.
+
+Question 38 : What are actions in Redux?
+Answer : Objects describing changes, e.g., `{ type: 'INCREMENT' }`.
+
+Question 39 : What are reducers in Redux?
+Answer : Pure functions updating state based on actions.
+
+Question 40 : What is middleware in Redux?
+Answer : Extends Redux for async logic, e.g., Redux Thunk or Saga.
+
+Question 41 : How do you connect Redux to React?
+Answer : Use react-redux's `connect()` or hooks like `useSelector` and `useDispatch`.
+
+Question 42 : What is code splitting?
+Answer : Splitting bundles for lazy loading, improving load times with React.lazy.
+
+Question 43 : What is server-side rendering (SSR)?
+Answer : Rendering on server for faster initial loads and SEO, e.g., with Next.js.
+
+Question 44 : How do you handle forms in React?
+Answer : Use controlled components with state for inputs and onSubmit for validation.
+
+Question 45 : What is lazy loading?
+Answer : Loading components on demand to reduce initial bundle size.
+
+Question 46 : What are portals?
+Answer : Render children into different DOM nodes, e.g., for modals.
+
+Question 47 : How do you handle authentication in React?
+Answer : Use JWT/localStorage with protected routes via context or Redux.
+
+Question 48 : What is React Fiber?
+Answer : React's reconciliation engine for better performance and concurrency.
+
+Question 49 : What is memoization in React?
+Answer : Caching results to avoid recomputations, using useMemo or React.memo.
+
+Question 50 : What are custom hooks?
+Answer : Reusable functions using built-in hooks, e.g., for form handling.
+
+Question 51 : What is the difference between useEffect and useLayoutEffect?
+Answer : useEffect runs after paint; useLayoutEffect before, for DOM mutations.
+
+Question 52 : How do you implement internationalization (i18n)?
+Answer : Use libraries like react-i18next for translations and locale handling.
+
+Question 53 : What is Prop Drilling?
+Answer : Passing props through multiple levels; solved by context or Redux.
+
+Question 54 : What are render props?
+Answer : Passing render functions as props for shared logic.
+
+Question 55 : What is the purpose of getDerivedStateFromProps?
+Answer : Updates state based on prop changes before render.
+
+Question 56 : How do you handle errors in async code?
+Answer : Use try-catch in async functions or error boundaries.
+
+Question 57 : What is React.memo?
+Answer : Memoizes components to skip renders on unchanged props.
+
+Question 58 : What are selectors in Redux?
+Answer : Functions extracting/computing derived state from store.
+
+Question 59 : How do you test React components?
+Answer : Use Jest and React Testing Library for unit/integration tests.
+
+Question 60 : What is the role of keys in reconciliation?
+Answer : Enables efficient diffing for list updates.
+
+### Advanced-Level Questions (61–100)
+
+Question 61 : What is concurrent mode in React?
+Answer : Allows interrupting renders for better responsiveness.
+
+Question 62 : Explain React Suspense.
+Answer : Handles loading states for lazy components or data fetching.
+
+Question 63 : What is useImperativeHandle hook?
+Answer : Customizes ref values exposed by forwardRef.
+
+Question 64 : How do you optimize large lists?
+Answer : Use virtualization libraries like react-window.
+
+Question 65 : What is the difference between Redux and Context API?
+Answer : Redux is for complex state; Context for simple prop passing.
+
+Question 66 : How do you handle side effects in Redux?
+Answer : Use middleware like Thunk for async actions.
+
+Question 67 : What is Redux Saga?
+Answer : Middleware for complex async flows using generators.
+
+Question 68 : Explain time slicing in React.
+Answer : Breaks work into chunks for non-blocking renders.
+
+Question 69 : What are hooks rules?
+Answer : Call at top level, only in functions/components.
+
+Question 70 : How do you implement SSR with React?
+Answer : Use ReactDOMServer.renderToString on Node.js.
+
+Question 71 : What is hydration in SSR?
+Answer : Attaching event handlers to server-rendered HTML.
+
+Question 72 : How do you manage global state without Redux?
+Answer : Use Context API with useReducer.
+
+Question 73 : What is useTransition hook?
+Answer : Marks updates as non-urgent for better UX.
+
+Question 74 : Explain React Profiler.
+Answer : Tool for measuring render performance.
+
+Question 75 : What is strict mode?
+Answer : Highlights potential issues in development.
+
+Question 76 : How do you handle animations in React?
+Answer : Use CSS transitions or libraries like React Spring.
+
+Question 77 : What is the purpose of getSnapshotBeforeUpdate?
+Answer : Captures DOM state before updates.
+
+Question 78 : How do you implement code splitting without lazy?
+Answer : Use dynamic imports.
+
+Question 79 : What are compound components?
+Answer : Components sharing implicit state, e.g., `<Select>`.
+
+Question 80 : Explain controlled vs uncontrolled forms.
+Answer : Controlled sync with state; uncontrolled use refs.
+
+Question 81 : What is useDebugValue hook?
+Answer : Displays custom labels in React DevTools.
+
+Question 82 : How do you handle SEO in React?
+Answer : Use SSR or pre-rendering with Next.js.
+
+Question 83 : What is React Query?
+Answer : Library for data fetching and caching.
+
+Question 84 : Explain the batching in React.
+Answer : Groups state updates for fewer renders.
+
+Question 85 : What is the role of unstable_batchedUpdates?
+Answer : Manually batches updates outside React.
+
+Question 86 : How do you create a custom error boundary?
+Answer : Class with componentDidCatch and getDerivedStateFromError.
+
+Question 87 : What is useId hook?
+Answer : Generates unique IDs for accessibility.
+
+Question 88 : Explain React’s event delegation.
+Answer : Events bubble to root for efficiency.
+
+Question 89 : What are portals used for?
+Answer : Rendering outside parent DOM, e.g., dialogs.
+
+Question 90 : How do you implement optimistic updates?
+Answer : Update UI before server confirmation, rollback on error.
+
+Question 91 : What is the difference between useEffect and componentDidMount?
+Answer : useEffect is for functionals; runs after render.
+
+Question 92 : How do you handle file uploads in React?
+Answer : Use FormData and controlled inputs.
+
+Question 93 : What is React’s startTransition?
+Answer : Marks low-priority updates.
+
+Question 94 : Explain useDeferredValue.
+Answer : Defers value updates for performance.
+
+Question 95 : What are service workers in React apps?
+Answer : For offline caching and PWA features.
+
+Question 96 : How do you secure React apps?
+Answer : Sanitize inputs, use HTTPS, avoid inline scripts.
+
+Question 97 : What is the purpose of React.Children utilities?
+Answer : Manipulates and traverses children props.
+
+Question 98 : Explain React’s batching in event handlers.
+Answer : Automatic in React 18 for better performance.
+
+Question 99 : How do you implement infinite scrolling?
+Answer : Use Intersection Observer with useEffect.
+
+Question 100 : What is the future of React with signals?
+Answer : Experimental feature for fine-grained reactivity, reducing re-renders.
