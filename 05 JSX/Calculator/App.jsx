@@ -1,6 +1,6 @@
 function App() {
   let userName = "RiyazKhan";
-  // userName = "";
+  // let userName = "";
 
   let userDetails = {
     Name: "RiyazKhan Pathan",
