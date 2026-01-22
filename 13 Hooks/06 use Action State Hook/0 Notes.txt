@@ -1,9 +1,8 @@
 use Action State Hook is useful to handle the form element efficiently.
 We can check errors and data of form element.
 
-
 const [data, action, pending] = useActionState();
 
-here data store data of field
+here data store data of fields
 action stores action of form element
 pending denotes if the form is submitted or not.

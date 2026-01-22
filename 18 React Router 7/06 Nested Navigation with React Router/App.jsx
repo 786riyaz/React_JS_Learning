@@ -1,13 +1,14 @@
-import { Routes, Route, Link, Navigate } from "react-router";
+import { Routes, Route, Navigate } from "react-router";
+// import { Routes, Route, Link, Navigate } from "react-router";
 import Home from "./Home";
 import About from "./About";
 import Login from "./Login";
 import Navbar from "./NewNavbar";
-import PageNotFound from "./PageNotFound";
 import College from "./College";
 import Student from "./Student";
 import Departments from "./Departments";
 import Details from "./Details";
+// import PageNotFound from "./PageNotFound";
 
 export default function App() {
   return (

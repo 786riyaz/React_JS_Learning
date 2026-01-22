@@ -11,6 +11,7 @@ export default function UserEdit() {
   const { id } = useParams();
 
   useEffect(() => { getUserData(); }, []);
+  
   async function getUserData() {
     let response = await fetch(apiURL + "/" + id);
     response = await response.json();
