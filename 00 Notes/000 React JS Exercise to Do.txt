@@ -1,0 +1,9 @@
+Event Delegation
+
+ReactJS me hooks complete karne honge
+useMemo :: A React Hook that caches the result of a calculation and only recalculates it when its dependencies change.
+useCallBack :: A React Hook that returns a memoized version of a callback function.
+
+session based auth
+jwt bases auth
+role based leave system for employee, manager and admin
