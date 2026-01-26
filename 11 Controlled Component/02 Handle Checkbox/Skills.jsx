@@ -7,15 +7,15 @@ function Skills() {
     // console.log(event)
     console.log(event.target.value, event.target.checked);
     if (event.target.checked){
-        console.log("Adding skill ::", event.target.value)
-        let newSkills = [...skills, event.target.value]
-        console.log(newSkills)
+        console.log("Adding skill ::", event.target.value);
+        let newSkills = [...skills, event.target.value];
+        console.log(newSkills);
         setSkills(newSkills);
     } else {
         console.log("Removing skill ::", event.target.value);
-        setSkills([...skills.filter((item)=>item!=event.target.value)])
+        setSkills([...skills.filter((item)=>item!=event.target.value)]);
     }
-  }
+  };
 
   return (
     <div>

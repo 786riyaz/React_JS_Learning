@@ -9,9 +9,9 @@ function App() {
     console.log(name, password);
 
     if(name && password){
-      return {message:"Data Submitted", name, password}
+      return {message:"Data Submitted", name, password};
     } else {
-      return {error:"Fail to Submit. Missing Details", name, password}
+      return {error:"Fail to Submit. Missing Details", name, password};
     }
   };
   

@@ -1,5 +1,5 @@
 function Technology({data}) {
-  console.log(data[5])
+  console.log(data[5]);
   return (
     <div>
       <span>{data[0]}</span>{data[1]!=undefined?", ":null} 

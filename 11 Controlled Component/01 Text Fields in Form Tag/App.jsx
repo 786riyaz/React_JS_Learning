@@ -10,11 +10,11 @@ function App() {
       <h1>Understanding Controller Component</h1>
 
       <form action="" method="get">
-      <input type="text" placeholder="Enter Your Name" onChange={(event)=>{setUserName(event.target.value)}} value={userName}/>
+      <input type="text" placeholder="Enter Your Name" onChange={(event)=>{setUserName(event.target.value);}} value={userName}/>
       <br />
-      <input type="text" placeholder="Enter Your Email" onChange={(event)=>{setEmail(event.target.value)}} value={userEmail}/>
+      <input type="text" placeholder="Enter Your Email" onChange={(event)=>{setEmail(event.target.value);}} value={userEmail}/>
       <br />
-      <input type="password" placeholder="Enter Your Password" onChange={(event)=>{setUserPassword(event.target.value)}} value={userPassword}/>
+      <input type="password" placeholder="Enter Your Password" onChange={(event)=>{setUserPassword(event.target.value);}} value={userPassword}/>
       <br />
       <button>Submit</button>
       <button onClick={()=>{setUserName(""); setEmail(""); setUserPassword("");}}>Clear</button>

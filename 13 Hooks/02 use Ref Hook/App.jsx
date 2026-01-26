@@ -7,12 +7,12 @@ function App() {
   const userNameDisplayHandle = () =>{
     console.log("Toggling Display of Input Field");
     if(userNameRef.current.style.display == "none"){
-      userNameRef.current.style.display = "inline"
+      userNameRef.current.style.display = "inline";
     } else {
-      userNameRef.current.style.display = "none"
+      userNameRef.current.style.display = "none";
     }
 
-  }
+  };
   const userNameHandle = () =>{
     console.log("Inside Handler function");
     console.log(userNameRef);
@@ -23,8 +23,8 @@ function App() {
 
   const hideH1 = () =>{
     console.log("Hidding H1");
-    h1Ref.current.style.display = "none"
-  }
+    h1Ref.current.style.display = "none";
+  };
    
   return (
     <div>
