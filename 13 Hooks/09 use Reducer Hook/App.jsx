@@ -10,7 +10,7 @@ const emptyData = {
 
 const reducer = (data, action) => {
   console.log("Inside Reducer Function");
-  return {...data, [action.type]:action.val}
+  return {...data, [action.type]:action.val};
 };
 
 export default function App() {
