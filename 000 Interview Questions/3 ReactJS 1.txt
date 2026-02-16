@@ -1,52 +1,52 @@
 ### React Fundamentals
 
 Question : 1 : What is React?
-Answer : React is a JavaScript library for building user interfaces from reusable components with declarative rendering and state management.
+Answer : React is a JavaScript library for building user interfaces from reusable components with declarative rendering and state management.[^1]
 
 Question : 2 : What is a component in React?
-Answer : A component is a self-contained piece of UI defined as a function that returns JSX and can be composed to build complex interfaces.
+Answer : A component is a self-contained piece of UI defined as a function that returns JSX and can be composed to build complex interfaces.[^1]
 
 Question : 3 : What is JSX?
-Answer : JSX is a JavaScript syntax extension that lets components return markup using XML-like tags, which React transforms into UI instructions.
+Answer : JSX is a JavaScript syntax extension that lets components return markup using XML-like tags, which React transforms into UI instructions.[^1]
 
 Question : 4 : Why must React component names be capitalized?
-Answer : Capitalization distinguishes custom React components from built-in HTML tags so React can treat them as component calls rather than DOM elements.
+Answer : Capitalization distinguishes custom React components from built-in HTML tags so React can treat them as component calls rather than DOM elements.[^1]
 
 Question : 5 : How are styles added in React?
-Answer : Styles can be applied using className for CSS classes and the style prop for inline styles that depend on JavaScript values.
+Answer : Styles can be applied using className for CSS classes and the style prop for inline styles that depend on JavaScript values.[^1]
 
 Question : 6 : What are props?
-Answer : Props are data passed from a parent component to a child component to configure its behavior and appearance.
+Answer : Props are data passed from a parent component to a child component to configure its behavior and appearance.[^1]
 
 Question : 7 : What is state?
-Answer : State is component memory managed by Hooks that lets a component remember information like user input across renders.
+Answer : State is component memory managed by Hooks that lets a component remember information like user input across renders.[^1]
 
 Question : 8 : How is state created in a function component?
-Answer : State is created by calling the useState Hook, which returns a current value and a setter function to trigger re-renders.
+Answer : State is created by calling the useState Hook, which returns a current value and a setter function to trigger re-renders.[^1]
 
 Question : 9 : Are multiple instances of the same component isolated in state?
-Answer : Yes, each rendered instance of a component gets its own independent state, so they don't affect each other.
+Answer : Yes, each rendered instance of a component gets its own independent state, so they don't affect each other.[^1]
 
 Question : 10 : What does lifting state up mean?
-Answer : Lifting state up means moving shared state to the nearest common parent so multiple children read and update it consistently via props.
+Answer : Lifting state up means moving shared state to the nearest common parent so multiple children read and update it consistently via props.[^1]
 
 Question : 11 : How does conditional rendering work in React?
-Answer : Conditional rendering uses normal JavaScript constructs like if, the ternary operator, or logical \&\& to choose which JSX to render.
+Answer : Conditional rendering uses normal JavaScript constructs like if, the ternary operator, or logical \&\& to choose which JSX to render.[^1]
 
 Question : 12 : How are lists rendered in React?
-Answer : Lists are rendered by mapping arrays to arrays of JSX elements, typically giving each element a unique key.
+Answer : Lists are rendered by mapping arrays to arrays of JSX elements, typically giving each element a unique key.[^1]
 
 Question : 13 : What is the key prop used for?
-Answer : Keys help React identify items across renders so it can correctly insert, remove, or reorder list elements without losing state.
+Answer : Keys help React identify items across renders so it can correctly insert, remove, or reorder list elements without losing state.[^1]
 
 Question : 14 : Why should keys be stable and unique?
-Answer : Stable, unique keys derived from data prevent incorrect state reuse and enable predictable list updates during reordering.
+Answer : Stable, unique keys derived from data prevent incorrect state reuse and enable predictable list updates during reordering.[^1]
 
 Question : 15 : What is an event handler in React?
-Answer : An event handler is a function passed to an event prop like onClick that React calls in response to user actions.
+Answer : An event handler is a function passed to an event prop like onClick that React calls in response to user actions.[^1]
 
 Question : 16 : Why should event handlers be passed, not called, in JSX?
-Answer : Passing handlers (without parentheses) lets React call them at the appropriate time, whereas calling them immediately triggers them during rendering.
+Answer : Passing handlers (without parentheses) lets React call them at the appropriate time, whereas calling them immediately triggers them during rendering.[^1]
 
 Question : 17 : What are Hooks in React?
 Answer : Hooks are functions that let components use React features such as state, context, effects, refs, and performance optimizations.
@@ -64,10 +64,10 @@ Question : 21 : When should effects be avoided?
 Answer : Avoid effects for internal data flow and computation because effects are escape hatches intended for external systems like network, DOM, or timers.
 
 Question : 22 : What is useState’s updater function form?
-Answer : The setter can receive a function with the previous state and should return the next state to avoid stale closures or race conditions.
+Answer : The setter can receive a function with the previous state and should return the next state to avoid stale closures or race conditions.[^1]
 
 Question : 23 : How does React handle multiple state updates?
-Answer : React 18 performs automatic batching to combine multiple state updates into a single render for better performance by default.
+Answer : React 18 performs automatic batching to combine multiple state updates into a single render for better performance by default.[^2]
 
 Question : 24 : What is useReducer used for?
 Answer : useReducer manages complex state by centralizing update logic in a reducer function that returns a new state from an action.
@@ -118,16 +118,16 @@ Question : 39 : How do nested Suspense boundaries behave?
 Answer : Nested boundaries let different parts of the UI reveal progressively, so outer content can appear before inner content that's still loading.
 
 Question : 40 : What does React 18 add regarding Suspense?
-Answer : React 18 integrates Suspense with streaming server-side rendering and selective hydration to improve perceived performance during loading.
+Answer : React 18 integrates Suspense with streaming server-side rendering and selective hydration to improve perceived performance during loading.[^2]
 
 Question : 41 : What is automatic batching?
-Answer : Automatic batching in React 18 groups multiple state updates into a single render even across async boundaries, improving performance.
+Answer : Automatic batching in React 18 groups multiple state updates into a single render even across async boundaries, improving performance.[^2]
 
 Question : 42 : What is concurrent rendering?
-Answer : Concurrent rendering is an internal capability that allows React to prepare multiple UI versions and prioritize updates when using concurrent features.
+Answer : Concurrent rendering is an internal capability that allows React to prepare multiple UI versions and prioritize updates when using concurrent features.[^2]
 
 Question : 43 : Is concurrent rendering opt-in?
-Answer : Yes, concurrent behavior is enabled when using concurrent features like transitions rather than a global “mode”.
+Answer : Yes, concurrent behavior is enabled when using concurrent features like transitions rather than a global “mode”.[^2]
 
 Question : 44 : What is the purpose of the fallback prop in Suspense?
 Answer : The fallback prop specifies lightweight UI (e.g., a spinner) displayed while children are suspended and is automatically swapped back when ready.
@@ -142,22 +142,22 @@ Question : 47 : What is the role of keys in resetting Suspense on navigation?
 Answer : Setting a key forces React to treat content as different between navigations so boundaries reset and show appropriate fallbacks.
 
 Question : 48 : What is the children prop?
-Answer : children is a special prop that represents nested JSX within a component's opening and closing tags for flexible composition.
+Answer : children is a special prop that represents nested JSX within a component's opening and closing tags for flexible composition.[^1]
 
 Question : 49 : What are fragments in React?
-Answer : Fragments let components return multiple elements without extra DOM wrappers using <>...</> in JSX.
+Answer : Fragments let components return multiple elements without extra DOM wrappers using <>...</> in JSX.[^1]
 
 Question : 50 : How does React update the UI after setState?
-Answer : After calling the state setter, React re-invokes the component to compute new JSX and then updates the DOM to reflect changes.
+Answer : After calling the state setter, React re-invokes the component to compute new JSX and then updates the DOM to reflect changes.[^1]
 
 Question : 51 : What are controlled form inputs?
-Answer : Controlled inputs derive their value from state and update state on change so the React state is the single source of truth.
+Answer : Controlled inputs derive their value from state and update state on change so the React state is the single source of truth.[^1]
 
 Question : 52 : What are uncontrolled inputs?
 Answer : Uncontrolled inputs store their own value in the DOM and can be accessed via refs when React-managed state is unnecessary.
 
 Question : 53 : When should state be immutable?
-Answer : State should be treated as immutable and replaced with new objects to enable reliable change detection and predictable updates.
+Answer : State should be treated as immutable and replaced with new objects to enable reliable change detection and predictable updates.[^1]
 
 Question : 54 : What does “pure” component logic mean in React?
 Answer : Purity means rendering should be free of side effects and depend only on props and state, enabling React's optimizations and predictability.
@@ -196,7 +196,7 @@ Question : 65 : What is the use Hook?
 Answer : use can read values from resources like Promises or context during rendering, enabling Suspense-driven data flows in compatible setups.
 
 Question : 66 : What is the difference between props and state?
-Answer : Props are external inputs passed from parents, while state is internal component memory that changes over time and triggers re-renders.
+Answer : Props are external inputs passed from parents, while state is internal component memory that changes over time and triggers re-renders.[^1]
 
 Question : 67 : How should computationally heavy code be handled in React?
 Answer : Wrap heavy computations in useMemo to cache results between renders and include precise dependencies to recompute only when needed.
@@ -214,13 +214,13 @@ Question : 71 : What is the difference between state and refs regarding re-rende
 Answer : Updating state schedules a re-render, while updating a ref’s current value does not trigger re-rendering.
 
 Question : 72 : Why is immutable state important for list updates?
-Answer : Immutable updates help React compare previous and next values to apply minimal DOM changes and preserve state correctly.
+Answer : Immutable updates help React compare previous and next values to apply minimal DOM changes and preserve state correctly.[^1]
 
 Question : 73 : How to choose keys for list items?
-Answer : Use stable, unique identifiers from the data such as IDs rather than indices, especially when items can be reordered or removed.
+Answer : Use stable, unique identifiers from the data such as IDs rather than indices, especially when items can be reordered or removed.[^1]
 
 Question : 74 : What is the recommended way to handle form input state?
-Answer : Use controlled components by binding value to state and updating state in onChange handlers for predictable data flow.
+Answer : Use controlled components by binding value to state and updating state in onChange handlers for predictable data flow.[^1]
 
 Question : 75 : Why shouldn’t effects orchestrate internal data flow?
 Answer : Effects are for external systems, and using them for internal flows complicates logic and can cause redundant work or bugs.
@@ -232,10 +232,10 @@ Question : 77 : What is the main purpose of React’s purity rule?
 Answer : Purity ensures predictable rendering, easier debugging, and enables React to optimize updates and scheduling effectively.
 
 Question : 78 : What are the major highlights of React 18?
-Answer : React 18 adds automatic batching, new concurrent APIs like startTransition, and streaming server rendering integrated with Suspense.
+Answer : React 18 adds automatic batching, new concurrent APIs like startTransition, and streaming server rendering integrated with Suspense.[^2]
 
 Question : 79 : How does Suspense integrate with server rendering in React 18?
-Answer : React 18 supports streaming server rendering with Suspense so server HTML can include fallbacks and progressively hydrate content.
+Answer : React 18 supports streaming server rendering with Suspense so server HTML can include fallbacks and progressively hydrate content.[^2]
 
 Question : 80 : How can navigation indicate progress with transitions?
 Answer : useTransition returns isPending, which can be used to show visual indicators like dimming or spinners during non-urgent navigation updates.
@@ -262,19 +262,19 @@ Question : 87 : Why is the dependency list important in Hooks?
 Answer : Dependencies determine when effects, memoized values, or callbacks re-run and must precisely list reactive values used inside.
 
 Question : 88 : How to avoid stale closures in state updates?
-Answer : Use the functional updater form setState(prev => next) to ensure the latest state is used when scheduling updates.
+Answer : Use the functional updater form setState(prev => next) to ensure the latest state is used when scheduling updates.[^1]
 
 Question : 89 : When would useReducer be favored over useState?
 Answer : Prefer useReducer when state logic is complex or transitions are driven by actions that benefit from centralized reducer logic.
 
 Question : 90 : How does React decide what to update on the page?
-Answer : React compares the previously rendered output to the next output and applies the minimal necessary DOM changes to reflect new JSX.
+Answer : React compares the previously rendered output to the next output and applies the minimal necessary DOM changes to reflect new JSX.[^1]
 
 Question : 91 : What is the rendering process at a high level?
-Answer : React calls components to produce JSX (render) and then commits changes to the DOM to update what's visible on the screen.
+Answer : React calls components to produce JSX (render) and then commits changes to the DOM to update what's visible on the screen.[^1]
 
 Question : 92 : What is the purpose of the children composition pattern?
-Answer : It allows parent components to control layout while passing arbitrary child content for flexible and reusable UI patterns.
+Answer : It allows parent components to control layout while passing arbitrary child content for flexible and reusable UI patterns.[^1]
 
 Question : 93 : Why keep render logic pure and side-effect free?
 Answer : Pure render logic ensures deterministic output for given inputs and lets React schedule and optimize updates safely.
